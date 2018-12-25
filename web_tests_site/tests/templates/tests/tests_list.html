@@ -1,0 +1,37 @@
+{% extends 'head.html' %}
+
+{% block content %}
+
+    <div class="main">
+        <nav class="navbar navbar-expand navbar-dark">
+            <div class="header">
+                <a class="navbar-brand" href="#">Список тестов</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="tests">
+
+        <div class="row row-my">
+            {% for test in tests %}
+                <div class="card-my">
+                    <div class="card" style="width: 18rem; height: 18rem; background: #f3bc5b">
+                        <div class="card-body" style="color: #565656;">
+                            <h5 class="card-title"> {{ test.name }} </h5>
+                            <p class="card-text"> {{ test.info }} </p>
+                            <a href="{% url 'test_detail' pkt=test.pk %}"
+                               class="btn btn-outline-info">Начать</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="float-none float-up">
+            <a class="float-up" href="#"><i class="fas fa-angle-up fa-5x"></i></a>
+        </div>
+
+    </div>
+
+{% endblock %}
+

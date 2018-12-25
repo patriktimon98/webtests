@@ -1,0 +1,49 @@
+{% extends 'head.html' %}
+
+{% block content %}
+
+    <div class="main">
+        <nav class="navbar navbar-expand navbar-dark">
+            <div class="header">
+                <a class="navbar-brand" href="#"><i class="far fa-id-card"></i> Профиль пользователя {{user.username}} </a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="tests">
+
+        <div class="container desc-line">
+                {% if user.is_staff %}
+                     <h1 class="display-5">Информация о пользователе
+                        <a class="edit" href="/edit_profile"><i class="fas fa-user-edit"></i></a>
+                        <a class="edit" href="/admin"><i class="fas fa-plus"></i></a>
+                     </h1>
+                {% else %}
+                    <h1 class="display-5">Информация о пользователе
+                        <a class="edit" href="/edit_profile"><i class="fas fa-user-edit"></i></a>
+                    </h1>
+                {% endif %}
+
+            <span>Место учёбы: {{ user_info.university }} </span><br>
+            <span>Специальность: {{ user_info.specialty }} </span><br>
+            <span>Дополнительная информация: {{ user_info.info }} </span>
+        </div>
+
+        {% if passed_tests != False %}
+            <div class="container desc-line">
+                {% for test in passed_tests %}
+                    <form>
+                        <button class="btn btn-outline-warning btn-lg" type="submit"
+                                formaction="{% url 'user_profile_with_graph' login=user.get_username pkt=test.pk %}"> {{ test.name }} </button>
+                    </form>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="container desc-line">
+                <h1 class="display-5">Вы пока не прошли ни одного теста</h1>
+            </div>
+        {% endif %}
+
+    </div>
+
+{% endblock %}

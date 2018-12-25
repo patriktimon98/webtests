@@ -1,0 +1,26 @@
+{% extends 'head.html' %}
+
+{% block content %}
+
+    <div class="main">
+        <nav class="navbar navbar-expand navbar-dark">
+            <div class="header">
+                <a class="navbar-brand" href="#"> {{ test.name }} </a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="tests">
+        <div class="container desc-line">
+            <h1 class="display-5"> {{ test.info }} </h1>
+            <span>{{ test.description }}</span>
+        </div>
+        <br><br>
+
+        <form style="text-align: center;">
+            <button class="btn btn-outline-warning btn-elg" type="submit"
+                    formaction="{% url 'questions_detail' pkt=test.pk %}">Начать тестирование</button>
+        </form>
+    </div>
+
+{% endblock %}

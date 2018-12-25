@@ -1,0 +1,42 @@
+{% extends 'head.html' %}
+
+{% block content %}
+
+    <div class="main">
+
+        <div class="container desc-line">
+            <h1 class="display-5">Это приложение предназначено для тестирования</h1>
+
+            <span>Опробуйте это приложение сейчас и зарегестрируйтесь</span><br>
+            <span>Присоединяйтесь и получайте удовольствие от решения тестов</span><br>
+            <span>Сохраняйте ваши результаты и делитесь с другими пользователями</span>
+        </div>
+
+        <div class="main-button">
+            <form>
+                <button class="btn btn-outline-success btn-elg" type="submit"
+                        formaction="{% url 'tests_list' %}">Начать тестирование</button>
+            </form>
+        </div>
+
+        <div class="container desc-line">
+            <h1 class="display-4">Шаг 1</h1>
+            <p>Зарегестрируйтесь - это займёт пару минут</p><br>
+
+            <h1 class="display-4">Шаг 2</h1>
+            <p>Заполните профиль - раскажите пару слов о себе</p><br>
+
+            <h1 class="display-4">Шаг 3</h1>
+            <p>Решайте тесты - выберите тот, который понравится имеено вам</p><br>
+
+            <h1 class="display-4">Шаг 4</h1>
+            <p>Проверьте свои результаты - с помощью удобных графиков</p><br>
+        </div>
+
+        <div class="float-none float-up">
+            <a class="float-up" href="#"><i class="fas fa-angle-up fa-5x"></i></a>
+        </div>
+
+    </div>
+
+{% endblock %}

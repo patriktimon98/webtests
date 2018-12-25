@@ -1,0 +1,87 @@
+body {
+	padding-top: 50px;
+	background-color: #dcf3c7;
+}
+
+div.header_slim {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.header {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.main {
+	background: linear-gradient(135deg, #a7cbda, #8ad746);
+}
+
+div.tests {
+	color: #565656;
+	background: #dcf3c7;	
+}
+
+div.desc-line {
+	padding: 75 0 0px;
+}
+
+div.faq {
+	height: 100%;
+}
+
+div.main-button {
+	padding-top: 250px;
+	text-align: center; 
+}
+
+div.float-up {
+	padding-right: 15px;
+	text-align: right; 
+	color: #565656;
+}
+
+div.card-my {
+	padding: 15px;
+}
+
+div.row-my {
+	padding: 30 30 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#wrap {
+ 	min-height: 100%;
+  	height: auto;
+  	margin: 0 auto -100px;
+  	padding: 0 0 100px;
+}
+
+footer.footer-my {
+  	height: 100px;
+  	background-color: #565656;
+}
+
+a.float-up {
+  	color: #565656;
+}
+
+a.float-up:hover {
+  	color: #f3bc5b;
+  	text-decoration: underline;
+}
+
+a.edit {
+  	color: #565656;
+}
+
+a.edit:hover {
+  	color: #f3bc5b;
+  	text-decoration: underline;
+}
+
+.carousel .item{ 
+	padding: 75px 15% 0px 15%;
+}

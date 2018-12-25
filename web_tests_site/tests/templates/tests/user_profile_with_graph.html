@@ -1,0 +1,84 @@
+{% extends 'head.html' %}
+{% load googlecharts %}
+
+{% block content %}
+
+    <div class="main">
+        <nav class="navbar navbar-expand navbar-dark">
+            <div class="header">
+                <a class="navbar-brand" href="#"><i class="far fa-id-card"></i> Профиль пользователя {{user.username}} </a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="tests">
+
+        <div class="container desc-line">
+                {% if user.is_staff %}
+                     <h1 class="display-5">Информация о пользователе
+                        <a class="edit" href="/edit_profile"><i class="fas fa-user-edit"></i></a>
+                        <a class="edit" href="/admin"><i class="fas fa-plus"></i></a>
+                     </h1>
+                {% else %}
+                    <h1 class="display-5">Информация о пользователе
+                        <a class="edit" href="/edit_profile"><i class="fas fa-user-edit"></i></a>
+                    </h1>
+                {% endif %}
+
+            <span>Место учёбы: {{ user_info.university }} </span><br>
+            <span>Специальность: {{ user_info.specialty }} </span><br>
+            <span>Дополнительная информация: {{ user_info.info }} </span>
+        </div>
+
+        {% if passed_tests != False %}
+            <div class="container desc-line">
+                {% for test in passed_tests %}
+                    <form>
+                        <button class="btn btn-outline-warning btn-lg" type="submit"
+                                formaction="{% url 'user_profile_with_graph' login=user.get_username pkt=test.pk %}"> {{ test.name }} </button>
+                    </form>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="container desc-line">
+                <h1 class="display-5">Вы пока не прошли ни одного теста</h1>
+            </div>
+        {% endif %}
+
+        <div class="container desc-line">
+            <h1 class="display-5"> {{ main_test.name }} </h1>
+        </div>
+
+        <div id="count_graph" class="container"></div>
+
+        {% googlecharts %}
+            {% data val "count" %}
+                {% col "string" "Дата" %}"{{ val }}"{% endcol %}
+                {% col "number" "Результат" %}{{ val }}{% endcol %}
+            {% enddata %}
+
+            {% options %}
+                kind: "LineChart",
+                options: {
+                    backgroundColor: "#dcf3c7",
+                    colors: ["#8ad746"],
+                    gridlineColor: "#ddd",
+                    legend: "none",
+                    vAxis: {minValue: 0},
+                    chartArea: {left: 40, top: 20, width: 800, height: 400},
+                    width: 820,
+                    height: 450,
+                    lineWidth: 6
+                }
+            {% endoptions %}
+
+            {% graph "count_graph" "count" %} {# используем опции по умолчанию #}
+        {% endgooglecharts %}
+
+        <div class="float-none float-up">
+            <a class="float-up" href="#"><i class="fas fa-angle-up fa-5x"></i></a>
+        </div>
+
+    </div>
+
+{% endblock %}

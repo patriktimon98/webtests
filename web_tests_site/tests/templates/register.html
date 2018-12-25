@@ -1,0 +1,18 @@
+{% extends "head.html" %}
+
+{% block content %}
+
+    <div class="tests">
+         <div class="container desc-line">
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <button class="btn btn-outline-warning btn-lg" type="submit">Зарегистрироваться</button>
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}
